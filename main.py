@@ -2,6 +2,7 @@ from room import Room
 from flashlight import Flashlight
 from character import Enemy
 from container import Container
+from wirecutter import Wirecutter
 
 heldItems = []
 myHealth = 53
@@ -45,6 +46,10 @@ yellowFlashlight = Flashlight("yellow",1,True)
 #
 supplycloset = Room("Supply Closet","A small dark room with a musty smell. On one side is a filing CABINET and a large plastic BIN. On the other side is a SHELF with supplies and a SHOEBOX.")
 
+# Boiler Room
+#
+boilerroom = Room("Boiler Room","A musky dark room covered in cobwebs. A boiler is set up in the northwest corner of the room with an electrical panel next to it. The moment you set foot in the room, the door behind you closes suddenly 
+ 
 # Create a fake room called locked that represents all permenently locked doors
 #
 locked = Room("locked","")
@@ -53,6 +58,7 @@ locked = Room("locked","")
 kitchen.link_room(locked, "EAST")
 kitchen.link_room(smalloffice, "SOUTH")
 kitchen.link_room(locked, "WEST")
+supplycloset.link_room(boilerroom, "NORTH")
 supplycloset.link_room(smalloffice, "EAST")
 smalloffice.link_room(kitchen, "NORTH")
 smalloffice.link_room(lab, "EAST")
@@ -74,12 +80,12 @@ def playerItems():
     if len(heldItems) == 1:
         print("You are holding a "+heldItems[0])
         print("You can DROP "+heldItems[0].upper())
-        if current_room.character is not None:
+        if current_room.character is not None:))
             print("You can USE "+heldItems[0].upper()+" to fight "+current_room.character.name)
     elif len(heldItems) >= 2:
         print("Your hands are full. You must drop something before you can pick anything else up.")
         print("You are holding a "+heldItems[0]+" and a "+heldItems[1])
-        print("You can DROP "+heldItems[0].upper()+" or DROP "+heldItems[1].upper())
+        print("You can DROP "+heldItems[0].))upper()+" or DROP "+heldItems[1].upper())
         if current_room.character is not None:
             print("You can USE "+heldItems[0].upper()+" to fight "+current_room.character.name+" or USE "+heldItems[1].upper())
     # ********************************* SPECIAL ITEM INTERFACES *********************************
