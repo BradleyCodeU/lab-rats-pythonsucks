@@ -6,14 +6,14 @@ class Phone():
         self.isOn = False
 
     #getter that tells you if the phone has batteries or not
-    def get_batteries(self)
+    def get_batteries(self):
         if not self.deadPhone:
             print("The phone does have a battery in it. It should turn on.")
         else:
             print("The phone doesn't have any batteries in it.")
 
     #getter that tells you if the phone has a signal
-    def get_signal(self)
+    def get_signal(self):
         if self.deadPhone or self.isOn == False:
             print("You can't check the signal when the phone is off.")
         elif self.isOn and self.signal == False:
@@ -24,7 +24,7 @@ class Phone():
         
 
     #setter that turns on the phone
-    def turn_on(self)
+    def turn_on(self):
         if not self.isOn:
             if not self.deadPhone:
                 self.isOn = True
@@ -33,7 +33,7 @@ class Phone():
                 print("You attempt to turn on the phone but it doesn't work. You should check the batteries.")
 
     #setter that turns off the phone
-    def turn_off(self)
+    def turn_off(self):
         if self.isOn:
             self.isOn = False
             print("You switch the phone off. Its light stops shining.")

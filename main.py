@@ -2,7 +2,7 @@ from room import Room
 from flashlight import Flashlight
 from character import Enemy
 from container import Container
-from wirecutter import Wirecutter
+from phone import Phone
 
 heldItems = []
 myHealth = 53
@@ -53,15 +53,11 @@ yellowFlashlight = Flashlight("yellow",1,True)
 #
 supplycloset = Room("Supply Closet","A small dark room with a musty smell. On one side is a filing CABINET and a large plastic BIN. On the other side is a SHELF with supplies and a SHOEBOX.")
 
-<<<<<<< HEAD
 
-
-=======
 # Boiler Room
 #
 boilerroom = Room("Boiler Room","A musky dark room covered in cobwebs. A BOILER is set up in the northwest corner of the room with an electrical panel next to it. There is a FLASHLIGHT on the ground.")
- 
->>>>>>> 517a3625b3f7e64ce6d354555701566b7b29a2ca
+
 # Create a fake room called locked that represents all permenently locked doors
 #
 locked = Room("locked","")
@@ -91,12 +87,9 @@ smalloffice.link_room(locked, "SOUTH")
 smalloffice.link_room(supplycloset, "WEST")
 lab.link_room(locked, "SOUTH")
 lab.link_room(smalloffice, "WEST")
-<<<<<<< HEAD
 boilerroom.link_room(supplycloset, "SOUTH")
-=======
 lab.link_room(library, "NORTH")
 library.link_room(lab, "SOUTH")
->>>>>>> 93def0dfe87d2367f89718bf181e16cc79dc1155
 current_room = kitchen
 
 
@@ -118,12 +111,12 @@ def playerItems():
     if len(heldItems) == 1:
         print("You are holding a "+heldItems[0])
         print("You can DROP "+heldItems[0].upper())
-        if current_room.character is not None:))
+        if current_room.character is not None:
             print("You can USE "+heldItems[0].upper()+" to fight "+current_room.character.name)
     elif len(heldItems) >= 2:
         print("Your hands are full. You must drop something before you can pick anything else up.")
         print("You are holding a "+heldItems[0]+" and a "+heldItems[1])
-        print("You can DROP "+heldItems[0].))upper()+" or DROP "+heldItems[1].upper())
+        print("You can DROP "+heldItems[0].upper()+" or DROP "+heldItems[1].upper())
         if current_room.character is not None:
             print("You can USE "+heldItems[0].upper()+" to fight "+current_room.character.name+" or USE "+heldItems[1].upper())
     # ********************************* SPECIAL ITEM INTERFACES *********************************
