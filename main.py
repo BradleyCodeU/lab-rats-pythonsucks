@@ -2,6 +2,7 @@ from room import Room
 from flashlight import Flashlight
 from character import Enemy
 from container import Container
+from wirecutter import Wirecutter
 
 heldItems = []
 myHealth = 53
@@ -18,7 +19,7 @@ kitchen = Room("Kitchen","A dark and dirty room with flies buzzing around. There
 
 # The kitchen has a CUPBOARD object that contains/hides 3 interactive items, a sponge, a plate, a can of soup
 # Once this container is open, the interactive items will no longer be hidden in the container
-kitchen.cupboard = Container("cupboard above the sink",["sponge","plate","can of "+u'\u0411\u043E\u0440\u0449'+" soup"])
+kitchen.cupboard = Container("cupboard above the sink",["sponge","plate","can of bOPW soup"])
 # The kitchen has a CABINET object that contains/hides 2 interactive items, a knife and a twinkie
 # Once this container is open, the interactive items will no longer be hidden in the container
 kitchen.cabinet = Container("cabinet under the sink",["knife","twinkie"])
@@ -52,8 +53,15 @@ yellowFlashlight = Flashlight("yellow",1,True)
 #
 supplycloset = Room("Supply Closet","A small dark room with a musty smell. On one side is a filing CABINET and a large plastic BIN. On the other side is a SHELF with supplies and a SHOEBOX.")
 
+<<<<<<< HEAD
 
 
+=======
+# Boiler Room
+#
+boilerroom = Room("Boiler Room","A musky dark room covered in cobwebs. A boiler is set up in the northwest corner of the room with an electrical panel next to it. The moment you set foot in the room, the door behind you closes suddenly 
+ 
+>>>>>>> 517a3625b3f7e64ce6d354555701566b7b29a2ca
 # Create a fake room called locked that represents all permenently locked doors
 #
 locked = Room("locked","")
@@ -75,6 +83,7 @@ library.create_room_item("empty purse")
 kitchen.link_room(locked, "EAST")
 kitchen.link_room(smalloffice, "SOUTH")
 kitchen.link_room(locked, "WEST")
+supplycloset.link_room(boilerroom, "NORTH")
 supplycloset.link_room(smalloffice, "EAST")
 smalloffice.link_room(kitchen, "NORTH")
 smalloffice.link_room(lab, "EAST")
@@ -105,12 +114,12 @@ def playerItems():
     if len(heldItems) == 1:
         print("You are holding a "+heldItems[0])
         print("You can DROP "+heldItems[0].upper())
-        if current_room.character is not None:
+        if current_room.character is not None:))
             print("You can USE "+heldItems[0].upper()+" to fight "+current_room.character.name)
     elif len(heldItems) >= 2:
         print("Your hands are full. You must drop something before you can pick anything else up.")
         print("You are holding a "+heldItems[0]+" and a "+heldItems[1])
-        print("You can DROP "+heldItems[0].upper()+" or DROP "+heldItems[1].upper())
+        print("You can DROP "+heldItems[0].))upper()+" or DROP "+heldItems[1].upper())
         if current_room.character is not None:
             print("You can USE "+heldItems[0].upper()+" to fight "+current_room.character.name+" or USE "+heldItems[1].upper())
     # ********************************* SPECIAL ITEM INTERFACES *********************************
@@ -172,7 +181,7 @@ def checkUserInput(current_room,command,heldItems):
         # Open smalloffice.desk and concat each of the contents to the end of room_items
         current_room.room_items += smalloffice.package.open()
     elif current_room.name == "Small Office" and command == "READ":
-        print(u'\u0420\u043e\u0441\u0441\u0438\u044f\u262D'+" You can't read it. It's written is some strange Cyrillic script.")
+        print("POCCNR??? You can't read it. It's written is some strange Cyrillic script.")
     elif current_room.name == "Small Office" and command == "DESK" and "brass key" in heldItems:
         # Open smalloffice.desk and concat each of the contents to the end of room_items
         print("You use the brass key to unlock the desk.")
