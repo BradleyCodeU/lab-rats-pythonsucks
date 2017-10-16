@@ -2,13 +2,15 @@ from room import Room
 from flashlight import Flashlight
 from character import Enemy
 from container import Container
-from wirecutter import Wirecutter
+from phone import Phone
 
 heldItems = []
 myHealth = 53
 visitedRooms = []
 
 # ********************************* SET UP THE ROOMS *********************************
+
+
 
 # Kitchen
 #
@@ -21,11 +23,11 @@ kitchen.cupboard = Container("cupboard above the sink",["sponge","plate","can of
 # The kitchen has a CABINET object that contains/hides 2 interactive items, a knife and a twinkie
 # Once this container is open, the interactive items will no longer be hidden in the container
 kitchen.cabinet = Container("cabinet under the sink",["knife","twinkie"])
-
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
 kitchen.create_room_item("spoon")
 kitchen.create_room_item("rat")
 
+<<<<<<< HEAD
 # Garage
 #
 # Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
@@ -39,6 +41,8 @@ garage = Room("Garage","A dark room with what looks to be a workbench in the cor
 garage.create_room_item("wrench")
 garage.create_room_item("broken glass")
 
+=======
+>>>>>>> ea0b757d8775cbd22eb0ebdc57b42caca4b8d336
 
 
 # Small Office
@@ -49,6 +53,8 @@ smalloffice.package = Container("ozon.ru package",["sheet of bubble wrap","porce
 smalloffice.create_room_item("guinea pig")
 redFlashlight = Flashlight("red",0,False)
 
+
+
 # Laboratory
 #
 lab = Room("Laboratory","A bright room with sunlight shining through windows secured by prison bars. There is a messy SHELF on the north wall.")
@@ -57,17 +63,33 @@ lab.shelf = Container("shelf",["brass key","spork","yellow flashlight"],"on")
 lab.create_room_item("rat")
 yellowFlashlight = Flashlight("yellow",1,True)
 
+
+
 # Supply Closet
 #
 supplycloset = Room("Supply Closet","A small dark room with a musty smell. On one side is a filing CABINET and a large plastic BIN. On the other side is a SHELF with supplies and a SHOEBOX.")
 
+
 # Boiler Room
 #
-boilerroom = Room("Boiler Room","A musky dark room covered in cobwebs. A boiler is set up in the northwest corner of the room with an electrical panel next to it. The moment you set foot in the room, the door behind you closes suddenly 
- 
+boilerroom = Room("Boiler Room","A musky dark room covered in cobwebs. A BOILER is set up in the northwest corner of the room with an electrical panel next to it. There is a FLASHLIGHT on the ground.")
+
 # Create a fake room called locked that represents all permenently locked doors
 #
 locked = Room("locked","")
+
+
+
+# Library
+#
+library = Room("Library","A dark and dirty room with CobWebs and spiders all around. There are Chemistry Books, Old Computers, and a drawer in the desk.")
+# Once this container is open, the interactive items will no longer be hidden in the container
+library.drawer = Container("drawer in the desk",["Baseball bat"])
+# Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
+library.create_room_item("old book")
+library.create_room_item("empty purse")
+
+
 
 # Connect rooms. These are one-way connections.
 kitchen.link_room(locked, "EAST")
@@ -81,7 +103,17 @@ smalloffice.link_room(locked, "SOUTH")
 smalloffice.link_room(supplycloset, "WEST")
 lab.link_room(locked, "SOUTH")
 lab.link_room(smalloffice, "WEST")
+boilerroom.link_room(supplycloset, "SOUTH")
+lab.link_room(library, "NORTH")
+library.link_room(lab, "SOUTH")
 current_room = kitchen
+
+
+
+
+
+
+
 
 # Set up characters
 dmitry = Enemy("Dmitry", "A smelly zombie")
@@ -95,12 +127,12 @@ def playerItems():
     if len(heldItems) == 1:
         print("You are holding a "+heldItems[0])
         print("You can DROP "+heldItems[0].upper())
-        if current_room.character is not None:))
+        if current_room.character is not None:
             print("You can USE "+heldItems[0].upper()+" to fight "+current_room.character.name)
     elif len(heldItems) >= 2:
         print("Your hands are full. You must drop something before you can pick anything else up.")
         print("You are holding a "+heldItems[0]+" and a "+heldItems[1])
-        print("You can DROP "+heldItems[0].))upper()+" or DROP "+heldItems[1].upper())
+        print("You can DROP "+heldItems[0].upper()+" or DROP "+heldItems[1].upper())
         if current_room.character is not None:
             print("You can USE "+heldItems[0].upper()+" to fight "+current_room.character.name+" or USE "+heldItems[1].upper())
     # ********************************* SPECIAL ITEM INTERFACES *********************************
