@@ -26,6 +26,21 @@ kitchen.cabinet = Container("cabinet under the sink",["knife","twinkie"])
 kitchen.create_room_item("spoon")
 kitchen.create_room_item("rat")
 
+# Garage
+#
+# Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
+garage = Room("Garage","A dark room with what looks to be a workbench in the corner with tools and a small lamp on it, and in the center of the room there is a motorcycle. There is also a TOOLBOX on the desk")
+
+# The garage has a TOOLBOX object that contains/hides 1 interactive item, a set of keys for the motorcycle
+# Once this container is open, the interactive items will no longer be hidden in the container
+ garage.desk = Container("toolbox on the desk",["motorcycle keys"])
+ garage.container = Container("[motorcycle"])
+# Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
+garage.create_room_item("wrench")
+garage.create_room_item("broken glass")
+
+
+
 # Small Office
 #
 smalloffice = Room("Small Office","A dark room with a mess of books and papers covering the desk. There is some mail and an ozon.ru PACKAGE. You can READ a book. You can look in the DESK.")
@@ -71,7 +86,7 @@ current_room = kitchen
 # Set up characters
 dmitry = Enemy("Dmitry", "A smelly zombie")
 dmitry.set_speech("Brrlgrh... rgrhl... brains...")
-dmitry.set_weaknesses(["FORK","SPORK","KNIFE"])
+dmitry.set_weaknesses(["FORK","SPORK","KNIFE", "SPOON"])
 supplycloset.set_character(dmitry)
 
 # This is a procedure that simply prints the items the player is holding and tells them if they can do something with that item
@@ -154,6 +169,14 @@ def checkUserInput(current_room,command,heldItems):
         current_room.room_items += smalloffice.desk.open()
     elif current_room.name == "Small Office" and command == "DESK":
         print("The desk drawer is locked.")
+
+    elif current_room.name == "garage" and command == "MOTORCYCLE" and "motorcycle keys" in heldItems:
+       # use motorcycle to go to town
+        print("You use the motorcycle key and go to town.")
+        current_room = town
+    elif current_room.name == "garage" and command == "MOTORCYCLE":
+        print("The motorcycle needs a key")
+        
     elif current_room.name == "Laboratory" and command == "SHELF":
         # Open lab.shelf and concat each of the contents to the end of room_items
         current_room.room_items += lab.shelf.open()
