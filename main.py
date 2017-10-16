@@ -48,7 +48,7 @@ supplycloset = Room("Supply Closet","A small dark room with a musty smell. On on
 
 # Boiler Room
 #
-boilerroom = Room("Boiler Room","A musky dark room covered in cobwebs. A boiler is set up in the northwest corner of the room with an electrical panel next to it. The moment you set foot in the room, the door behind you closes suddenly 
+boilerroom = Room("Boiler Room","A musky dark room covered in cobwebs. A BOILER is set up in the northwest corner of the room with an electrical panel next to it. There is a FLASHLIGHT on the ground.")
  
 # Create a fake room called locked that represents all permenently locked doors
 #
@@ -66,6 +66,7 @@ smalloffice.link_room(locked, "SOUTH")
 smalloffice.link_room(supplycloset, "WEST")
 lab.link_room(locked, "SOUTH")
 lab.link_room(smalloffice, "WEST")
+boilerroom.link_room(supplycloset, "SOUTH")
 current_room = kitchen
 
 # Set up characters
