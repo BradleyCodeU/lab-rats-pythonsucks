@@ -9,6 +9,8 @@ visitedRooms = []
 
 # ********************************* SET UP THE ROOMS *********************************
 
+
+
 # Kitchen
 #
 # Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
@@ -20,10 +22,11 @@ kitchen.cupboard = Container("cupboard above the sink",["sponge","plate","can of
 # The kitchen has a CABINET object that contains/hides 2 interactive items, a knife and a twinkie
 # Once this container is open, the interactive items will no longer be hidden in the container
 kitchen.cabinet = Container("cabinet under the sink",["knife","twinkie"])
-
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
 kitchen.create_room_item("spoon")
 kitchen.create_room_item("rat")
+
+
 
 # Small Office
 #
@@ -33,6 +36,8 @@ smalloffice.package = Container("ozon.ru package",["sheet of bubble wrap","porce
 smalloffice.create_room_item("guinea pig")
 redFlashlight = Flashlight("red",0,False)
 
+
+
 # Laboratory
 #
 lab = Room("Laboratory","A bright room with sunlight shining through windows secured by prison bars. There is a messy SHELF on the north wall.")
@@ -41,13 +46,30 @@ lab.shelf = Container("shelf",["brass key","spork","yellow flashlight"],"on")
 lab.create_room_item("rat")
 yellowFlashlight = Flashlight("yellow",1,True)
 
+
+
 # Supply Closet
 #
 supplycloset = Room("Supply Closet","A small dark room with a musty smell. On one side is a filing CABINET and a large plastic BIN. On the other side is a SHELF with supplies and a SHOEBOX.")
 
+
+
 # Create a fake room called locked that represents all permenently locked doors
 #
 locked = Room("locked","")
+
+
+
+# Library
+#
+library = Room("Library","A dark and dirty room with CobWebs and spiders all around. There are Chemistry Books, Old Computers, and a drawer in the desk.")
+# Once this container is open, the interactive items will no longer be hidden in the container
+library.drawer = Container("drawer in the desk",["Baseball bat"])
+# Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
+library.create_room_item("old book")
+library.create_room_item("empty purse")
+
+
 
 # Connect rooms. These are one-way connections.
 kitchen.link_room(locked, "EAST")
@@ -60,7 +82,16 @@ smalloffice.link_room(locked, "SOUTH")
 smalloffice.link_room(supplycloset, "WEST")
 lab.link_room(locked, "SOUTH")
 lab.link_room(smalloffice, "WEST")
+lab.link_room(library, "NORTH")
+library.link_room(lab, "SOUTH")
 current_room = kitchen
+
+
+
+
+
+
+
 
 # Set up characters
 dmitry = Enemy("Dmitry", "A smelly zombie")
