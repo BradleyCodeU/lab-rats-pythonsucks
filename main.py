@@ -250,7 +250,3 @@ waittingroom = Box("Box under a chair",["key to geroge "])
 # The waitting Room has stcks of papers object that contains/hides 2 interactive items
 # Once this papers are removed, the interactive items will no longer be hidden in the container
 wattingroom = Container("papers piled everywhere"
-
-# Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
-kitchen.create_room_item("spoon")
-kitchen.create_room_item("rat")
