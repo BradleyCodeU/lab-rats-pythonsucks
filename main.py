@@ -27,7 +27,7 @@ kitchen.cabinet = Container("cabinet under the sink",["knife","twinkie"])
 kitchen.create_room_item("spoon")
 kitchen.create_room_item("rat")
 
-<<<<<<< HEAD
+
 # Garage
 #
 # Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
@@ -35,14 +35,11 @@ garage = Room("Garage","A dark room with what looks to be a workbench in the cor
 
 # The garage has a TOOLBOX object that contains/hides 1 interactive item, a set of keys for the motorcycle
 # Once this container is open, the interactive items will no longer be hidden in the container
- garage.desk = Container("toolbox on the desk",["motorcycle keys"])
- garage.container = Container("[motorcycle"])
+garage.desk = Container("toolbox on the desk",["motorcycle keys"])
+garage.container = Container("[motorcycle]")
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
 garage.create_room_item("wrench")
 garage.create_room_item("broken glass")
-
-=======
->>>>>>> ea0b757d8775cbd22eb0ebdc57b42caca4b8d336
 
 
 # Small Office
@@ -72,7 +69,10 @@ supplycloset = Room("Supply Closet","A small dark room with a musty smell. On on
 
 # Boiler Room
 #
-boilerroom = Room("Boiler Room","A musky dark room covered in cobwebs. A BOILER is set up in the northwest corner of the room with an electrical panel next to it. There is a FLASHLIGHT on the ground.")
+boilerroom = Room("Boiler Room","A musky dark room covered in cobwebs. A BOILER is set up in the northwest corner of the room with an electrical PANEL next to it.")
+#boiler room has an electrical panel that has one item in it.
+lab.panel = Container("panel",["phone"],"in")
+phone = Phone(True,False)
 
 # Create a fake room called locked that represents all permenently locked doors
 #
@@ -120,6 +120,11 @@ dmitry = Enemy("Dmitry", "A smelly zombie")
 dmitry.set_speech("Brrlgrh... rgrhl... brains...")
 dmitry.set_weaknesses(["FORK","SPORK","KNIFE", "SPOON"])
 supplycloset.set_character(dmitry)
+
+zombiecat = Enemy("Zombie Cat","A cute cat that's rotting.")
+zombiecat.set_speech("Meoagh...!")
+zombiecat.set_weaknesses(["FORK","SPORK","KNIFE"])
+boilerroom.set_character(zombiecat)
 
 # This is a procedure that simply prints the items the player is holding and tells them if they can do something with that item
 def playerItems():
@@ -237,14 +242,14 @@ while True:
 # Waitting Room 
 #
 # Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
-waitting room  = Room("waitting room","A dark and dirty room with flies buzzing around. There are chairs, old dusty lamps, and tables inthe middle of the room. There is are Boxs laying around and papers piled all over the place.")
+waittingroom  = Room("waitting room","A dark and dirty room with flies buzzing around. There are chairs, old dusty lamps, and tables inthe middle of the room. There is are Boxs laying around and papers piled all over the place.")
 
 # The waitting room has a BOX object that contains/hides 3 interactive items, a key to the geroge,
 # Once this container is open, the interactive items will no longer be hidden in the container
-waitting room = Box("Box under a chair",["key to geroge "])
+waittingroom = Box("Box under a chair",["key to geroge "])
 # The waitting Room has stcks of papers object that contains/hides 2 interactive items
 # Once this papers are removed, the interactive items will no longer be hidden in the container
-watting room = Container("papers piled everywhere"
+wattingroom = Container("papers piled everywhere"
 
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
 kitchen.create_room_item("spoon")
