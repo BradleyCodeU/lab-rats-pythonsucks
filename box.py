@@ -13,7 +13,7 @@ class BOX():
             print("The BOX doesn't have a key in it.")
 
     #getter that tells you if the BOX has a key 
-    def get_signal(self):
+    def get_BOX(self):
         if self.BOX or self.isOn == False:
             print("You can't check if theres a key if BOX is closed.")
         elif self.isOn and self.signal == False:
