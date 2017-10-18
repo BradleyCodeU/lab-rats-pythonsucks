@@ -90,6 +90,24 @@ library.create_room_item("old book")
 library.create_room_item("empty purse")
 
 
+# Waitting Room 
+#
+# Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
+waitting room  = Room("waitting room","A dark and dirty room with flies buzzing around. There are chairs, old dusty lamps, and tables inthe middle of the room. There is are Boxs laying around and papers piled all over the place.")
+
+# The waitting room has a BOX object that contains/hides 3 interactive items, a key to the geroge,
+# Once this container is open, the interactive items will no longer be hidden in the container
+waitting room = Box("Box under a chair",["key to geroge "])
+# The waitting Room has stcks of papers object that contains/hides 2 interactive items
+# Once this papers are removed, the interactive items will no longer be hidden in the container
+watting room = Container("papers piled everywhere"
+
+# Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
+waitting room.create_room_item("spoon")
+waitting room.create_room_item("rat")
+
+
+
 
 # Connect rooms. These are one-way connections.
 kitchen.link_room(locked, "EAST")
@@ -234,18 +252,3 @@ while True:
     # Check the user input
     current_room = checkUserInput(current_room,command,heldItems)
 
-# Waitting Room 
-#
-# Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
-waitting room  = Room("waitting room","A dark and dirty room with flies buzzing around. There are chairs, old dusty lamps, and tables inthe middle of the room. There is are Boxs laying around and papers piled all over the place.")
-
-# The waitting room has a BOX object that contains/hides 3 interactive items, a key to the geroge,
-# Once this container is open, the interactive items will no longer be hidden in the container
-waitting room = Box("Box under a chair",["key to geroge "])
-# The waitting Room has stcks of papers object that contains/hides 2 interactive items
-# Once this papers are removed, the interactive items will no longer be hidden in the container
-watting room = Container("papers piled everywhere"
-
-# Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
-kitchen.create_room_item("spoon")
-kitchen.create_room_item("rat")
