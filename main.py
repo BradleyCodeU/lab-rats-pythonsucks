@@ -275,4 +275,7 @@ wattingroom = Container("papers piled everywhere")
 =======
 wattingroom = Container("papers piled everywhere"
 >>>>>>> 7b4c1286e57211c77d2c2db25b5693206aef3318
+<<<<<<< HEAD
+>>>>>>> d0b19629ac130cd4b0338331f2b8bbb4b0aaafd1
+=======
 >>>>>>> d0b19629ac130cd4b0338331f2b8bbb4b0aaafd1
