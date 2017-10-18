@@ -85,7 +85,7 @@ locked = Room("locked","")
 #
 library = Room("Library","A dark and dirty room with CobWebs and spiders all around. There are Chemistry Books, Old Computers, and a drawer in the desk.")
 # Once this container is open, the interactive items will no longer be hidden in the container
-library.drawer = Container("drawer in the desk",["Baseball bat"])
+library.drawer = Container("drawer in the desk",["baseball bat"])
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
 old_book = Book("closed","red")
 library.create_room_item("empty purse")
@@ -94,18 +94,20 @@ library.create_room_item("empty purse")
 # Waitting Room 
 #
 # Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
-waittingroom  = Room("waitting room","A dark and dirty room with flies buzzing around. There are chairs, old dusty lamps, and tables inthe middle of the room. There is are Boxs laying around and papers piled all over the place.")
+waittingroom  = Room("waitting room","A dark and dirty room with flies buzzing around. There are chairs, old dusty lamps, and tables inthe middle of the room. There is are BOXES laying around and PAPERS piled all over the place.")
 
 # The waitting room has a BOX object that contains/hides 3 interactive items, a key to the geroge,
 # Once this container is open, the interactive items will no longer be hidden in the container
-waittingroom = Box("Box under a chair",["key to geroge "])
+waittingroom.box = Container("Box under a chair",["key to geroge "])
 # The waitting Room has stcks of papers object that contains/hides 2 interactive items
 # Once this papers are removed, the interactive items will no longer be hidden in the container
-wattingroom = Container("papers piled everywhere")
+waittingroom.papers = Container("papers piled everywhere",["item 1","item 2"])
 
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
 waittingroom.create_room_item("spoon")
 waittingroom.create_room_item("rat")
+
+
 
 
 
@@ -258,15 +260,4 @@ while True:
     # Check the user input
     current_room = checkUserInput(current_room,command,heldItems)
 
-# Waitting Room 
-#
-# Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
-waittingroom  = Room("waitting room","A dark and dirty room with flies buzzing around. There are chairs, old dusty lamps, and tables inthe middle of the room. There is are Boxs laying around and papers piled all over the place.")
 
-# The waitting room has a BOX object that contains/hides 3 interactive items, a key to the geroge,
-# Once this container is open, the interactive items will no longer be hidden in the container
-waittingroom = Box("Box under a chair",["key to geroge "])
-# The waitting Room has stcks of papers object that contains/hides 2 interactive items
-# Once this papers are removed, the interactive items will no longer be hidden in the container
-wattingroom = Container("papers piled everywhere")
-wattingroom = Container("papers piled everywhere")
