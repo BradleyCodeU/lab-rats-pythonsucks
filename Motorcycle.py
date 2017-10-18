@@ -1,16 +1,15 @@
 class Phone():
     #constructor
-    def __init__(self,signal,deadPhone):
-        self.signal = signal # true or false
-        self.deadPhone = deadPhone #true or false
-        self.isOn = False
+    def __init__(self,color,fuel):
+        self.color = color # string
+        self.fuel = fuel # int
 
-    #getter that tells you if the phone has batteries or not
-    def get_batteries(self):
-        if not self.deadPhone:
-            print("The phone does have a battery in it. It should turn on.")
+    #getter that tells you if the motorcycle has keys
+    def get_keys(self):
+        if not keys:
+            print("You have no keys")
         else:
-            print("The phone doesn't have any batteries in it.")
+            print("You have the keys")
 
     #getter that tells you if the phone has a signal
     def get_signal(self):

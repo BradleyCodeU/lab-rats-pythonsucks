@@ -37,7 +37,7 @@ garage = Room("Garage","A dark room with what looks to be a workbench in the cor
 # The garage has a TOOLBOX object that contains/hides 1 interactive item, a set of keys for the motorcycle
 # Once this container is open, the interactive items will no longer be hidden in the container
 garage.desk = Container("toolbox on the desk",["motorcycle keys"])
-garage.container = Container("[motorcycle]")
+garage.container = Container("motorcycle", ["motorcycle"],"in")
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
 garage.create_room_item("wrench")
 garage.create_room_item("broken glass")
@@ -87,7 +87,7 @@ library = Room("Library","A dark and dirty room with CobWebs and spiders all aro
 # Once this container is open, the interactive items will no longer be hidden in the container
 library.drawer = Container("drawer in the desk",["Baseball bat"])
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
-book = old_book("closed","red")
+old_book = Book("closed","red")
 library.create_room_item("empty purse")
 
 
@@ -101,7 +101,7 @@ waittingroom  = Room("waitting room","A dark and dirty room with flies buzzing a
 waittingroom = Box("Box under a chair",["key to geroge "])
 # The waitting Room has stcks of papers object that contains/hides 2 interactive items
 # Once this papers are removed, the interactive items will no longer be hidden in the container
-wattingroom = Container("papers piled everywhere"
+wattingroom = Container("papers piled everywhere")
 
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
 waittingroom.create_room_item("spoon")
