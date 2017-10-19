@@ -29,6 +29,19 @@ kitchen.create_room_item("spoon")
 kitchen.create_room_item("rat")
 
 
+# Bathroom
+#
+# Room descriptions should include interactive containers like CABINET that contain/hide other interactive items
+bathroom = Room("Bathroom","A squeaky clean room. There are Sinks , Showers , and Tolites.")
+
+# The bathroom has a CABINET object that contains/hides 1 interactive item, a razor
+# Once this container is open, the interactive items will no longer be hidden in the container
+bathroom.cabinet = Container("cabinet above the sink",["a razor"])
+# Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
+bathroom.create_room_item("rat")
+
+
+
 # Garage
 #
 # Room descriptions should include interactive containers like CABINET, BIN, DESK, SHELF, SHOEBOX that contain/hide other interactive items
