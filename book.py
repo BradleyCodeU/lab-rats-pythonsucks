@@ -11,12 +11,21 @@ class Book():
         elif self.color == "blue" or "BLUE":
             print("The book is blue.")
 
-    #setter 
-    def turn_opened(self):
-        if not self.opened:
-            if not self.opened:
-                print("You opened your book and the book has no usefull information")
-            else:
-                print("The book is still closed.")
+    def check_input(self,command):
+        if command == ("open"):
+            self.opened = true
+        elif
+            print("Book is closed"):
 
+    def get_interface(self):
+        
+
+    def get_opened(self):
+
+    def get_opened(self):
+        if self.opened = true
+            print("The book has to many words in it and you decide to not read it")
+           
   
+     
+            

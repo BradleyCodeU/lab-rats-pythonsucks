@@ -85,10 +85,12 @@ locked = Room("locked","")
 #
 library = Room("Library","A dark and dirty room with CobWebs and spiders all around. There are Chemistry Books, Old Computers, and a drawer in the desk.")
 # Once this container is open, the interactive items will no longer be hidden in the container
-library.drawer = Container("drawer in the desk",["baseball bat"])
+library.drawer = Container("drawer in the desk",["baseball bat","Book"])
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
-old_book = Book("closed","red")
+book = Book(True,False)
 library.create_room_item("empty purse")
+library.create_room_item("book")
+
 
 
 # Waitting Room 
@@ -139,7 +141,7 @@ current_room = kitchen
 # Set up characters
 dmitry = Enemy("Dmitry", "A smelly zombie")
 dmitry.set_speech("Brrlgrh... rgrhl... brains...")
-dmitry.set_weaknesses(["FORK","SPORK","KNIFE", "SPOON"])
+dmitry.set_weaknesses(["FORK","SPORK","KNIFE", "SPOON","baseball bat"])
 supplycloset.set_character(dmitry)
 
 zombiecat = Enemy("Zombie Cat","A cute cat that's rotting.")
@@ -167,6 +169,8 @@ def playerItems():
         redFlashlight.get_interface(heldItems,current_room)
     if "yellow flashlight" in heldItems:
         yellowFlashlight.get_interface(heldItems,current_room)
+    if "book" in heldItems:
+        book.get_interface()
 
 # This fuction checks the player's command and then runs the corresponding method
 def checkUserInput(current_room,command,heldItems):
@@ -181,6 +185,9 @@ def checkUserInput(current_room,command,heldItems):
         redFlashlight.check_input(command,heldItems,current_room)
     elif "yellow flashlight" in heldItems and "YELLOW FLASHLIGHT" in command:
         yellowFlashlight.check_input(command,heldItems,current_room)
+    elif "book" in heldItem and "BOOK" in command:
+        book.check_input(command)
+        
 
     # ********************************* USE, TAKE, DROP *********************************
     # Use an item to fight an enemy
