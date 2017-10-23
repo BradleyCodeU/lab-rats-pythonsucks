@@ -4,6 +4,11 @@ from character import Enemy
 from container import Container
 from phone import Phone
 from book import Book
+<<<<<<< HEAD
+from motorcycle import Motorcycle
+=======
+from razor import Razor
+>>>>>>> a9f6e9cceb3a66408297ca4694f6d49a17ca6c76
 
 heldItems = []
 myHealth = 53
@@ -50,7 +55,7 @@ garage = Room("Garage","A dark room with what looks to be a workbench in the cor
 # The garage has a TOOLBOX object that contains/hides 1 interactive item, a set of keys for the motorcycle
 # Once this container is open, the interactive items will no longer be hidden in the container
 garage.desk = Container("toolbox on the desk",["motorcycle keys"])
-garage.container = Container("motorcycle", ["motorcycle"],"in")
+garage.container = Container("motorcycle", ["MOTORCYCLE"],"in")
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
 garage.create_room_item("wrench")
 garage.create_room_item("broken glass")
@@ -113,10 +118,12 @@ waittingroom  = Room("waitting room","A dark and dirty room with flies buzzing a
 
 # The waitting room has a BOX object that contains/hides 3 interactive items, a key to the geroge,
 # Once this container is open, the interactive items will no longer be hidden in the container
-waittingroom.box = Container("Box under a chair",["key to geroge "])
+waittingroom.box = Container("Box under a chair",["key to garage"])
 # The waitting Room has stcks of papers object that contains/hides 2 interactive items
 # Once this papers are removed, the interactive items will no longer be hidden in the container
 waittingroom.papers = Container("papers piled everywhere",["item 1","item 2"])
+waittingroom.container = Container("garage", ["GARAGE"],"in")
+
 
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
 waittingroom.create_room_item("spoon")
@@ -130,18 +137,21 @@ waittingroom.create_room_item("rat")
 # Connect rooms. These are one-way connections.
 kitchen.link_room(locked, "EAST")
 kitchen.link_room(smalloffice, "SOUTH")
-kitchen.link_room(locked, "WEST")
+kitchen.link_room(bathroom, "WEST")
 supplycloset.link_room(boilerroom, "NORTH")
 supplycloset.link_room(smalloffice, "EAST")
 smalloffice.link_room(kitchen, "NORTH")
 smalloffice.link_room(lab, "EAST")
 smalloffice.link_room(locked, "SOUTH")
 smalloffice.link_room(supplycloset, "WEST")
-lab.link_room(locked, "SOUTH")
+lab.link_room(bathroom, "SOUTH")
 lab.link_room(smalloffice, "WEST")
 boilerroom.link_room(supplycloset, "SOUTH")
 lab.link_room(library, "NORTH")
 library.link_room(lab, "SOUTH")
+bathroom.link_room(lab,"NORTH")
+bathroom.link_room(locked,"WEST")
+bathroom.link_room(kitchen,"EAST")
 current_room = kitchen
 
 
@@ -247,6 +257,14 @@ def checkUserInput(current_room,command,heldItems):
         current_room.room_items += smalloffice.desk.open()
     elif current_room.name == "Small Office" and command == "DESK":
         print("The desk drawer is locked.")
+
+
+         elif current_room.name == "waittingroom" and command == "GARAGE" and "garage keys" in heldItems:
+       # use keys to go to garage
+        print("You go into the garage")
+        current_room = garage
+    elif current_room.name == "waittingroom" and command == "GARAGE:
+        print("The door to the garage needs a key")
 
     elif current_room.name == "garage" and command == "MOTORCYCLE" and "motorcycle keys" in heldItems:
        # use motorcycle to go to town
