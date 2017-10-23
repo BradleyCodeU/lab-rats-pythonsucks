@@ -85,7 +85,7 @@ supplycloset = Room("Supply Closet","A small dark room with a musty smell. On on
 #
 boilerroom = Room("Boiler Room","A musky dark room covered in cobwebs. A BOILER is set up in the northwest corner of the room with an electrical PANEL next to it.")
 #boiler room has an electrical panel that has one item in it.
-lab.panel = Container("panel",["phone"],"in")
+boilerroom.panel = Container("panel",["phone"],"in")
 phone = Phone(True,False)
 
 # Create a fake room called locked that represents all permenently locked doors
@@ -96,13 +96,13 @@ locked = Room("locked","")
 
 # Library
 #
-library = Room("Library","A dark and dirty room with CobWebs and spiders all around. There are Chemistry Books, Old Computers, and a drawer in the desk.")
+library = Room("Library","A dark and dirty room with CobWebs and spiders all around. There are Chemistry Books, Old Computers, and a DRAWER.")
 # Once this container is open, the interactive items will no longer be hidden in the container
-library.drawer = Container("drawer in the desk",["baseball bat","Book"])
+library.drawer = Container("Drawer",["baseball bat","Book"])
 # Create an interactive item that's show in a room (not hidden in a container) with create_room_item()
-book = Book(True,False)
+book = Book(True,"red")
 library.create_room_item("empty purse")
-library.create_room_item("book")
+
 
 
 
@@ -159,7 +159,7 @@ supplycloset.set_character(dmitry)
 
 zombiecat = Enemy("Zombie Cat","A cute cat that's rotting.")
 zombiecat.set_speech("Meoagh...!")
-zombiecat.set_weaknesses(["FORK","SPORK","KNIFE"])
+zombiecat.set_weaknesses(["FORK","SPORK","KNIFE","SPOON"])
 boilerroom.set_character(zombiecat)
 
 # This is a procedure that simply prints the items the player is holding and tells them if they can do something with that item
@@ -182,8 +182,8 @@ def playerItems():
         redFlashlight.get_interface(heldItems,current_room)
     if "yellow flashlight" in heldItems:
         yellowFlashlight.get_interface(heldItems,current_room)
-    if "book" in heldItems:
-        book.get_interface()
+    ##if "book" in heldItems:
+       ## book.get_interface()
 
 # This fuction checks the player's command and then runs the corresponding method
 def checkUserInput(current_room,command,heldItems):
@@ -198,8 +198,8 @@ def checkUserInput(current_room,command,heldItems):
         redFlashlight.check_input(command,heldItems,current_room)
     elif "yellow flashlight" in heldItems and "YELLOW FLASHLIGHT" in command:
         yellowFlashlight.check_input(command,heldItems,current_room)
-    elif "book" in heldItem and "BOOK" in command:
-        book.check_input(command)
+    elif "book" in heldItem and "OPEN" in command:
+        book.check_input(command,heldItems)
         
 
     # ********************************* USE, TAKE, DROP *********************************
@@ -258,6 +258,12 @@ def checkUserInput(current_room,command,heldItems):
     elif current_room.name == "Laboratory" and command == "SHELF":
         # Open lab.shelf and concat each of the contents to the end of room_items
         current_room.room_items += lab.shelf.open()
+
+    elif current_room.name == "Boiler Room" and command == "PANEL":
+         current_room.room_items += boilerroom.panel.open()
+
+    elif current_room.name == "Library" and command == "DRAWER":
+        current_room.room_items += library.drawer.open()
 
     # ********************************* MOVE *********************************
     else:

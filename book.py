@@ -11,19 +11,14 @@ class Book():
         elif self.color == "blue" or "BLUE":
             print("The book is blue.")
 
-    def check_input(self,command):
-        if command == ("open"):
-            self.opened = true
-        elif
-            print("Book is closed"):
-
-    def get_interface(self):
-        
+    def check_input(self,command,heldItems):
+        if command == ("OPEN"):
+            self.opened = True
+        else:
+            print("Book is closed")
 
     def get_opened(self):
-
-    def get_opened(self):
-        if self.opened = true
+        if self.opened == True:
             print("The book has to many words in it and you decide to not read it")
            
   
