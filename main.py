@@ -4,6 +4,7 @@ from character import Enemy
 from container import Container
 from phone import Phone
 from book import Book
+from razor import Razor
 
 heldItems = []
 myHealth = 53
@@ -128,18 +129,21 @@ waittingroom.create_room_item("rat")
 # Connect rooms. These are one-way connections.
 kitchen.link_room(locked, "EAST")
 kitchen.link_room(smalloffice, "SOUTH")
-kitchen.link_room(locked, "WEST")
+kitchen.link_room(bathroom, "WEST")
 supplycloset.link_room(boilerroom, "NORTH")
 supplycloset.link_room(smalloffice, "EAST")
 smalloffice.link_room(kitchen, "NORTH")
 smalloffice.link_room(lab, "EAST")
 smalloffice.link_room(locked, "SOUTH")
 smalloffice.link_room(supplycloset, "WEST")
-lab.link_room(locked, "SOUTH")
+lab.link_room(bathroom, "SOUTH")
 lab.link_room(smalloffice, "WEST")
 boilerroom.link_room(supplycloset, "SOUTH")
 lab.link_room(library, "NORTH")
 library.link_room(lab, "SOUTH")
+bathroom.link_room(lab,"NORTH")
+bathroom.link_room(locked,"WEST")
+bathroom.link_room(kitchen,"EAST")
 current_room = kitchen
 
 
